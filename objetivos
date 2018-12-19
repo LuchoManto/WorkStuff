@@ -1,0 +1,5 @@
+19/12/18
+
+- hacer que makefile agregue los directorios del ambiente de trabajo si es que no estan creados (build, bin, etc..). considerar hacer esto usando make install.
+
+- escribir los primeros archivos fuente y que makefile los compile haciendo make
