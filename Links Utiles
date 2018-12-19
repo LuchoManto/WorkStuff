@@ -1,0 +1,11 @@
+pregunta sobre que build system (make, cmake, autotools) usar para proyectos cross platform
+
+- https://stackoverflow.com/questions/9791127/using-make-for-cross-platform-compilation
+- https://stackoverflow.com/questions/5837764/autotools-vs-cmake-for-both-windows-and-linux-compilation
+----------------------------------------------------------------------------------------------------
+
+
+CMake
+
+https://cmake.org/cmake-tutorial/
+https://github.com/catchorg/Catch2/blob/master/docs/cmake-integration.md
