@@ -11,3 +11,55 @@
 20/12/18
 
 terminar el file tree y que cmakelists este adaptado al entorno.
+
+
+librerias
+
+https, web socket
+
+
+la idea es armar un web socket en https entre el modulo y el servidor principal.
+
+compilar una serie de archivos usando arduino como builder y programarlos en el modulo, tambien usando arduino.
+
+se deberia poder elegir entre buildear y programar la parte de testing. aunque practicamente siempre va a ser util tenerla actualizada en el modulo para correr los tests cuando sea necesario.
+
+
+----------------------
+28/12/18
+
+- hacer trello para levantar el servicio de broker mosquitto en centOS
+- cambiar el modo sleep en centOS
+
+LIBRERIA QUE ESTOY USANDO DE ARDUINO PARA MQTT: https://github.com/256dpi/arduino-mqtt
+
+----------------------
+7/1/19
+
+Bluetooth en ESP32
+
+Al parecer, las librerias no estan completas. Lo unico que se puede hacer es usar el bluetooth para enviar una señal tipo beacon y rescatarla con el celular. Lo que hace el indio que vi en el video es usar esa misma señal de beacon para enviar data, pero parece que no es lo ideal. El dispositivo no va a conectarse REALMENTE al esp32 sino que va a leer lo que dice el beacon como si estuviera leyendo un broadcast
+
+guia para la libreria del señor nkolban: https://github.com/nkolban/esp32-snippets/blob/master/Documentation/BLE%20C%2B%2B%20Guide.pdf
+
+
+muy buen tutorial que explica server ble
+https://randomnerdtutorials.com/esp32-bluetooth-low-energy-ble-arduino-ide/
+
+GATT: https://www.oreilly.com/library/view/getting-started-with/9781491900550/ch04.html
+
+----------------------
+10/1/19
+
+WiFi en ESP32
+
+Conexion TCP entre ESP32 y cliente: https://www.megunolink.com/articles/wireless/talk-esp32-over-wifi/ 
+
+
+----------------------
+14/1/19
+
+-ordenar los archivos c++ de arduino que quieras incluir en el repo de desarrollo. comenza a hacerles versionado.
+-empeza a buildear los archivos con la linea de comando asi dejas de usar el entorno de arduino que da culo
+
+
