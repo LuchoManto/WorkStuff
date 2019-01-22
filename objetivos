@@ -85,3 +85,19 @@ pubsubclient:
 17/1/19
 
 La clase string de arduino es una cagada. puedo inicializar de mil maneras un string pero si necesito iniciarlo de un array de caracteres estoy re cagado. no tengo forma de que convierta a un string sin tener que manualmente copiarlo uno a uno o insertarle un null terminator a mano al final del array de chars segun el length.
+
+----------------------
+22/1/19
+
+la conexion wifi se rompio y nunca volvio a levantarse. hice una pregunta en este issue https://github.com/espressif/arduino-esp32/issues/1212
+
+estados de wifi:
+
+WL_NO_SHIELD = 255,
+WL_IDLE_STATUS = 0,
+WL_NO_SSID_AVAIL = 1
+WL_SCAN_COMPLETED = 2
+WL_CONNECTED = 3
+WL_CONNECT_FAILED = 4
+WL_CONNECTION_LOST = 5
+WL_DISCONNECTED = 6
