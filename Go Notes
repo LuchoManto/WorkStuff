@@ -1,0 +1,184 @@
+Go Notes
+
+la funcion printf de Go define que %s puede formatear cualquier valor (objeto) que tenga un metodo que se llame String, que no tome ningun parametro y que devuelva un string.
+
+Every Go program is made up of packages.
+
+In Go, a name is exported if it begins with a capital letter. When importing a package, you can refer only to its exported names. Any "unexported" names are not accessible from outside the package.
+
+When declaring variables, the type comes after the variable name.
+
+Named return values
+	Go's return values may be named. If so, they are treated as variables defined at the top of the function.
+
+	These names should be used to document the meaning of the return values.
+
+	A return statement without arguments returns the named return values. This is known as a "naked" return.
+
+Switch without a condition is the same as switch true.
+
+This construct can be a clean way to write long if-then-else chains.
+
+DEFER
+	A defer statement defers the execution of a function until the surrounding function returns.
+
+	The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
+
+	Deferred function calls are pushed onto a stack. When a function returns, its deferred calls are executed in last-in-first-out order.
+
+	1. A deferred function's arguments are evaluated when the defer statement is evaluated.
+	2. Deferred function calls are executed in Last In First Out order after the surrounding function returns.
+	3. Deferred functions may read and assign to the returning function's named return values.
+
+PANIC
+	Panic is a built-in function that stops the ordinary flow of control and begins panicking. When the function F calls panic, execution of F stops, any deferred functions in F are executed normally, and then F returns to its caller. To the caller, F then behaves like a call to panic. The process continues up the stack until all functions in the current goroutine have returned, at which point the program crashes. Panics can be initiated by invoking panic directly. They can also be caused by runtime errors, such as out-of-bounds array accesses.
+
+RECOVER
+	Recover is a built-in function that regains control of a panicking goroutine. Recover is only useful inside deferred functions. During normal execution, a call to recover will return nil and have no other effect. If the current goroutine is panicking, a call to recover will capture the value given to panic and resume normal execution.
+
+
+Named return values
+	Go's return values may be named. If so, they are treated as variables defined at the top of the function.
+
+
+Short variable declarations
+	Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type.
+
+	Outside a function, every statement begins with a keyword (var, func, and so on) and so the := construct is not available.
+
+Switch
+	A switch statement is a shorter way to write a sequence of if - else statements. It runs the first case whose value is equal to the condition expression.
+
+	Go's switch is like the one in C, C++, Java, JavaScript, and PHP, except that Go only runs the selected case, not all the cases that follow. In effect, the break statement that is needed at the end of each case in those languages is provided automatically in Go. Another important difference is that Go's switch cases need not be constants, and the values involved need not be integers.
+
+	// Switch with no condition for if-else chain
+	func main() {
+	t := time.Now()
+	switch {
+	case t.Hour() < 12:
+		fmt.Println("Good morning!")
+	case t.Hour() < 17:
+		fmt.Println("Good afternoon.")
+	default:
+		fmt.Println("Good evening.")
+	}
+}
+
+
+PUNTEROS
+	En go, la operacion de punteros es basica. no permite la aritmetica de punteros. 
+
+	func main() {
+	i, j := 42, 2701
+
+	p := &i         // point to i
+	fmt.Println(*p) // read i through the pointer
+	*p = 21         // set i through the pointer
+	fmt.Println(i)  // see the new value of i
+
+	p = &j         // point to j
+	*p = *p / 37   // divide j through the pointer
+	fmt.Println(j) // see the new value of j
+}
+
+
+Para punteros a estructura, no existe el ->, simplemente se usa el punto . ya sea que estamos accediendo a la estructura directamente o a travez de un puntero a la misma. 
+
+ARREGLOS
+	los arreglos son como en c, son inflexibles.
+
+	Slices
+
+		An array has a fixed size. A slice, on the other hand, is a dynamically-sized, flexible view into the elements of an array. In practice, slices are much more common than arrays.
+
+		The type []T is a slice with elements of type T.
+
+		Slices are like references to arrays
+		
+		A slice does not store any data, it just describes a section of an underlying array.
+
+		Changing the elements of a slice modifies the corresponding elements of its underlying array.
+
+		Other slices that share the same underlying array will see those changes.
+
+		
+		Slice length and capacity
+
+			A slice has both a length and a capacity.
+
+			The length of a slice is the number of elements it contains.
+
+			The capacity of a slice is the number of elements in the underlying array, counting from the first element in the slice.
+
+Methods
+	Go does not have classes. However, you can define methods on types.
+
+	A method is a function with a special receiver argument.
+
+	The receiver appears in its own argument list between the func keyword and the method name.
+
+	a method is just a function with a receiver argument.
+
+
+	Methods and pointer indirection
+	Comparing the previous two programs, you might notice that functions with a pointer argument must take a pointer
+
+	while methods with pointer receivers take either a value or a pointer as the receiver when they are called
+
+
+Interfaces are implemented implicitly
+	A type implements an interface by implementing its methods. There is no explicit declaration of intent, no "implements" keyword.
+
+	Implicit interfaces decouple the definition of an interface from its implementation, which could then appear in any package without prearrangement.
+
+	Under the hood, interface values can be thought of as a tuple of a value and a concrete type:
+
+	(value, type)
+	
+	An interface value holds a value of a specific underlying concrete type.
+
+	Calling a method on an interface value executes the method of the same name on its underlying type.
+
+	The empty interface
+		The interface type that specifies zero methods is known as the empty interface:
+
+		interface{}
+		
+		An empty interface may hold values of any type. (Every type implements at least zero methods.)
+
+	Type assertions
+		A type assertion provides access to an interface value's underlying concrete value.
+
+		t := i.(T)
+		
+		This statement asserts that the interface value i holds the concrete type T and assigns the underlying T value to the variable t.
+
+	Type switches
+		A type switch is a construct that permits several type assertions in series.
+
+		A type switch is like a regular switch statement, but the cases in a type switch specify types (not values), and those values are compared against the type of the value held by the given interface value.
+
+		The declaration in a type switch has the same syntax as a type assertion i.(T), but the specific type T is replaced with the keyword type.
+
+Goroutines
+	A goroutine is a lightweight thread managed by the Go runtime.
+
+	go f(x, y, z)
+	starts a new goroutine running f(x, y, z)
+
+	The evaluation of f, x, y, and z happens in the current goroutine and the execution of f happens in the new goroutine.
+
+Channels
+
+	Channels are a typed conduit through which you can send and receive values with the channel operator, <-.
+
+	A sender can close a channel to indicate that no more values will be sent. Receivers can test whether a channel has been closed by assigning a second parameter to the receive expression: after
+
+	v, ok := <-ch
+	ok is false if there are no more values to receive and the channel is closed.
+
+	The loop for i := range c receives values from the channel repeatedly until it is closed.
+
+	Note: Only the sender should close a channel, never the receiver. Sending on a closed channel will cause a panic.
+
+	Another note: Channels aren't like files; you don't usually need to close them. Closing is only necessary when the receiver must be told there are no more values coming, such as to terminate a range loop.

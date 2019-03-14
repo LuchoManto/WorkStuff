@@ -1,0 +1,6 @@
+hay tests para templates. mira 50render.t y 60render_ws.t buscamos los tests y le reemplazamos los siteid por los nuevos.
+
+para sacar la M para la gente de web covertura, hace un hook que es de mojo. en dbamapp.pm esta un hook al final. fijate en las rutas para wscob, le dice qcual es el metodo que tiene que ejecutar. wscob. ahi en eso se ve bien el mapeo entre rutas y modulos. 
+
+la funcion procesa linea common la llaman todos. 
+

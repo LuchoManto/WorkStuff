@@ -1,0 +1,16 @@
+leeledzite301 conceptos
+
+que hace?
+copia la base de datos de ledzite y la guarda en pradere, junto con nuevos atributos
+
+para que lo hace?
+para acceder a los mismos datos sin tener que meterse a la bdd de ledzite, y para organizar la base de datos segun las necesidades de pradere
+
+en pradere, ciertos campos se llaman distinto y se organizan distinto que en ledzite.
+
+como lo hace?
+1- trae la bdd de ledzite de algun servidor de claro
+2- trae la bdd de pradere. Si no existe, la crea.
+3- crea un hash con las conversiones de los nombres nuevos para pfsitios y pfceldas
+4- fila por fila, copia las rows de ledzite y las ingresa a las tablas dentro de pradere. copia solo los argumentos necesarios usando un array, y arma las rows para pfsitios y pfceldas copiando los argumentos de ledzite pasandolos por la estructura que convierte los nombres. 
+5 - Al finalizar la copia de una fila para todas las tablas, procede a actualizar la bdd de pradere, insertando las filas en las tablas correspondientes

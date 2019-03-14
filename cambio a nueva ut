@@ -1,0 +1,12 @@
+empezamos siguiendo el archivo de texto "recargar-bdd-con-nuevo-ut-en-servidor-de-prueba"
+vimos que en sosneado se puede operar con el super usuario exa94581. 
+el usuario bam es el que corre dbam app en los servidores, por eso cuando se copia el programa, se tiene que hacer la copia con rsync usando el usuario bam
+empezamos borrando las tablas de gsm, umts y lte, y copiandolas de vuelta desde ledzite
+en el mismo programa que lee ledzite, modificamos la parte donde tiene las reglas para leer los siteid, y las modificamos para que pueda leer los nuevos cellid de 14 y 15 caracteres, tanto para gsm como umts y lte. (la tabla)
+despues de tirar los tests, la ejecutamos para que copie todas las tablas desde ledzite a pradere, con las nuevas reglas.
+despues pasamos a pfsitios y pfceldas. 
+depsues empezamos a iniciar el programa y buscar los errores, uqe en su mayoria fueron lineas que restringen el paso de strings a 5 caracteres. filtrando los resultados de 7 caracteres, que es la nueva regla. 
+
+agregamos common-new-ut.json que es para hacer pruebas
+
+common.json es un archivo que tiene datos de la red bastante comunes para todos.

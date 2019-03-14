@@ -86,8 +86,8 @@ pubsubclient:
 
 La clase string de arduino es una cagada. puedo inicializar de mil maneras un string pero si necesito iniciarlo de un array de caracteres estoy re cagado. no tengo forma de que convierta a un string sin tener que manualmente copiarlo uno a uno o insertarle un null terminator a mano al final del array de chars segun el length.
 
-----------------------
 22/1/19
+----------------------
 
 la conexion wifi se rompio y nunca volvio a levantarse. hice una pregunta en este issue https://github.com/espressif/arduino-esp32/issues/1212
 
@@ -101,3 +101,32 @@ WL_CONNECTED = 3
 WL_CONNECT_FAILED = 4
 WL_CONNECTION_LOST = 5
 WL_DISCONNECTED = 6
+
+24/1/19
+----------------------
+mosquitto conf: /etc/mosquitto/mosquitto.conf
+
+guias para conexiones persistentes en mqtt:
+http://www.steves-internet-guide.com/mqtt-clean-sessions-example/
+https://www.electricmonk.nl/log/2017/02/20/reliable-message-delivery-with-mosquitto-mqtt/
+
+
+guia piola para conceptos basicos de mqtt: https://www.hivemq.com/mqtt-essentials/
+
+tareas: 
+- leer la guia
+- hacer tests para operaciones basicas de mqtt
+
+
+29/1/19
+----------------------
+
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Web_frameworks
+
+
+21/2/19
+
+cosas de pradere:
+
+hay tres niveles: atencion al cliente, tecnico y experto
+los de atencion al cliente no pueden ver el siteid
